@@ -8,8 +8,8 @@ public class Main {
         String response;
         do {
             System.out.println("Digite o número do algoritmo:");
-            int problema = scanner.nextInt();
-            switch (problema) {
+            int algorithm = scanner.nextInt();
+            switch (algorithm) {
                 case 2 -> somar(scanner);
                 case 3 -> dividir(scanner);
                 case 4 -> calcularRaizes(scanner);
@@ -46,20 +46,23 @@ public class Main {
         System.out.println("Cálculo das raízes de uma equação de segundo grau");
         System.out.println("Digite o primeiro valor");
         int primeiro = scanner.nextInt();
+        while(primeiro == 0){
+                System.out.println("Digite um valor diferente de 0");
+                primeiro = scanner.nextInt();
+        }
         System.out.println("Digite o segundo valor");
         int segundo = scanner.nextInt();
         System.out.println("Digite o terceiro valor");
         int terceiro = scanner.nextInt();
         double delta = pow(segundo,2) - 4 * primeiro * terceiro;
+        double raiz = (-segundo + sqrt(delta)) / (2 * primeiro);
         if(delta < 0 ){
             System.out.println("Não tem raízes reais");
         } else if (delta == 0){
-            double raiz =  (-segundo + sqrt(delta)) / (2 * primeiro);
             System.out.println("A raiz é " + raiz + "!");
         } else {
-            double raizUm =  (-segundo + sqrt(delta)) / (2 * primeiro);
             double raizDois =  (-segundo - sqrt(delta)) / (2 * primeiro);
-            System.out.println("As raizes são " + raizUm + " e " + raizDois + "!");
+            System.out.println("As raizes são " + raiz + " e " + raizDois + "!");
         }
     }
 
